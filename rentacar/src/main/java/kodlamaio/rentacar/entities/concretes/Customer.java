@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,33 +17,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="cars")
-public class Car{
-	
+@Table(name = "customers")
+public class Customer {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-
-	/* -------------------------
-	@Column(name="brand_id")
-	private int brandId;
 	
-	@Column(name="color_id")
-	private int colorId;
-	----------------------------*/
+	@Column(name = "user_id")
+	private int userId;
 	
-	@Column(name="model_year")
-	private int modelYear;
-	
-	@Column(name="daily_price")
-	private int dailyPrice;
-	
-	@Column(name="description")
-	private String description;
+	@Column(name = "company_name")
+	private String companyName;
 	
 	@ManyToOne
-	@JoinColumn(name = "brand_id")
-	private Brand brand;
-
+	@JoinColumn(name = "rent_id")
+	private Rental rentals;
 }

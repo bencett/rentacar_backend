@@ -13,4 +13,5 @@ public interface CarService {
 	Result delete(Car car);
 	DataResult<List<Car>> getCarsByBrandId(int brandId);
 	DataResult<List<Car>> getCarsByColorId(int colorId);
+	//DataResult<List<CarDetailsDto>> getCarDetails();
 }

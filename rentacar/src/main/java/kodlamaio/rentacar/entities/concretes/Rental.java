@@ -1,5 +1,6 @@
 package kodlamaio.rentacar.entities.concretes;
 
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,33 +17,27 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="cars")
-public class Car{
-	
+@Table(name = "rentals")
+public class Rental {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-
-	/* -------------------------
-	@Column(name="brand_id")
-	private int brandId;
 	
-	@Column(name="color_id")
-	private int colorId;
-	----------------------------*/
+	@Column(name = "car_id")
+	private int carId;
 	
-	@Column(name="model_year")
-	private int modelYear;
+	@Column(name = "customer_id")
+	private int customerId;
 	
-	@Column(name="daily_price")
-	private int dailyPrice;
+	@Column(name = "rent_date")
+	private LocalDate rentDate;
 	
-	@Column(name="description")
-	private String description;
+	@Column(name = "return_date")
+	private LocalDate returnDate;
 	
 	@ManyToOne
-	@JoinColumn(name = "brand_id")
-	private Brand brand;
-
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 }

@@ -54,6 +54,13 @@ public class CarManager implements CarService{
 		return new SuccessDataResult<List<Car>>
 		(this.carDao.getCarsByColorId(colorId),"Renge göre arabalar listelendi.");
 	}
+	
+	/*@Override
+	public DataResult<List<CarDetailsDto>> getCarDetails() {
+
+		return new SuccessDataResult<List<CarDetailsDto>>
+		(this.carDao.getCarDetails(),"Araba detayları listelendi.");
+	}*/
 
 	@Override
 	public Result update(Car car) {

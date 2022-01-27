@@ -53,4 +53,9 @@ public class CarsController {
 	public DataResult<List<Car>> getCarsByColorId(int id) {
 		return this.carService.getCarsByColorId(id);
 	}
+	
+	/*@GetMapping("/getCarDetails")
+	public DataResult<List<CarDetailsDto>> getCarDetails() {
+		return this.carService.getCarDetails();
+	}*/
 }
