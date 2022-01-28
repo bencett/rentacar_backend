@@ -28,8 +28,8 @@ public class Rental {
 	@Column(name = "car_id")
 	private int carId;
 	
-	@Column(name = "customer_id")
-	private int customerId;
+	//@Column(name = "customer_id")
+	//private int customerId;
 	
 	@Column(name = "rent_date")
 	private LocalDate rentDate;

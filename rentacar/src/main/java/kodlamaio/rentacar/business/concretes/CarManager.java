@@ -11,6 +11,7 @@ import kodlamaio.rentacar.core.utilities.results.SuccessDataResult;
 import kodlamaio.rentacar.core.utilities.results.SuccessResult;
 import kodlamaio.rentacar.dataAccess.abstracts.CarDao;
 import kodlamaio.rentacar.entities.concretes.Car;
+import kodlamaio.rentacar.entities.dtos.CarDetailsDto;
 
 @Service
 public class CarManager implements CarService{
@@ -32,7 +33,7 @@ public class CarManager implements CarService{
 	@Override
 	public Result add(Car car) {
 		
-		if (!checkIfCarNameOverTwoChar(car.getBrand().getName()) == true
+		if (checkIfCarNameOverTwoChar(car.getDescription()) == true
 				&& checkIfDailyPriceOverZero(car.getDailyPrice()) == true) {
 			this.carDao.save(car);
 			return new SuccessResult("Araba eklendi.");
@@ -55,12 +56,12 @@ public class CarManager implements CarService{
 		(this.carDao.getCarsByColorId(colorId),"Renge göre arabalar listelendi.");
 	}
 	
-	/*@Override
+	@Override
 	public DataResult<List<CarDetailsDto>> getCarDetails() {
 
 		return new SuccessDataResult<List<CarDetailsDto>>
 		(this.carDao.getCarDetails(),"Araba detayları listelendi.");
-	}*/
+	}
 
 	@Override
 	public Result update(Car car) {

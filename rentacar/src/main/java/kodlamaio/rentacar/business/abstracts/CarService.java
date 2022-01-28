@@ -4,6 +4,7 @@ import java.util.List;
 import kodlamaio.rentacar.core.utilities.results.DataResult;
 import kodlamaio.rentacar.core.utilities.results.Result;
 import kodlamaio.rentacar.entities.concretes.Car;
+import kodlamaio.rentacar.entities.dtos.CarDetailsDto;
 
 public interface CarService {
 	
@@ -13,5 +14,5 @@ public interface CarService {
 	Result delete(Car car);
 	DataResult<List<Car>> getCarsByBrandId(int brandId);
 	DataResult<List<Car>> getCarsByColorId(int colorId);
-	//DataResult<List<CarDetailsDto>> getCarDetails();
+	DataResult<List<CarDetailsDto>> getCarDetails();
 }

@@ -11,6 +11,7 @@ import kodlamaio.rentacar.business.abstracts.CarService;
 import kodlamaio.rentacar.core.utilities.results.DataResult;
 import kodlamaio.rentacar.core.utilities.results.Result;
 import kodlamaio.rentacar.entities.concretes.Car;
+import kodlamaio.rentacar.entities.dtos.CarDetailsDto;
 
 @RestController
 @RequestMapping("/api/cars")
@@ -54,8 +55,8 @@ public class CarsController {
 		return this.carService.getCarsByColorId(id);
 	}
 	
-	/*@GetMapping("/getCarDetails")
+	@GetMapping("/getCarDetails")
 	public DataResult<List<CarDetailsDto>> getCarDetails() {
 		return this.carService.getCarDetails();
-	}*/
+	}
 }
