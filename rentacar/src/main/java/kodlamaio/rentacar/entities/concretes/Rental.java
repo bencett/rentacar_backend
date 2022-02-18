@@ -1,6 +1,8 @@
 package kodlamaio.rentacar.entities.concretes;
 
 import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +39,7 @@ public class Rental {
 	@Column(name = "return_date")
 	private LocalDate returnDate;
 	
-	@ManyToOne
+	@ManyToOne//(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 }

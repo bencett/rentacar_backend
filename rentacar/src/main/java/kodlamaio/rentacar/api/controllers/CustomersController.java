@@ -43,4 +43,5 @@ public class CustomersController {
 	public Result delete(@RequestBody Customer customer) {
 		return this.customerService.delete(customer);
 	}
+
 }

@@ -1,5 +1,8 @@
 package kodlamaio.rentacar.entities.concretes;
 
+import java.util.UUID;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,9 +23,9 @@ import lombok.NoArgsConstructor;
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private int id;
+	private UUID id;
 	
 	@Column(name = "user_id")
 	private int userId;
@@ -31,7 +33,7 @@ public class Customer {
 	@Column(name = "company_name")
 	private String companyName;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "rent_id")
 	private Rental rentals;
 }

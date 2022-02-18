@@ -39,7 +39,7 @@ public class RentalManager implements RentalService{
 		}else {
 			rental.setRentDate(LocalDate.now());
 			this.rentalDao.save(rental);
-			return new SuccessResult("Araba kiralandı.");	
+			return new SuccessResult("Araba kiralandı.");
 		}
 	}
 
@@ -55,5 +55,13 @@ public class RentalManager implements RentalService{
 		
 		this.rentalDao.delete(rental);
 		return new SuccessResult("Kiralama silindi.");
+	}
+
+	@Override
+	public Result returnRentedCar(Rental rental) {
+		
+		rental.setReturnDate(LocalDate.now());
+		this.rentalDao.save(rental);
+		return new SuccessResult("Araba geri getirildi.");
 	}
 }

@@ -51,4 +51,5 @@ public class CustomerManager implements CustomerService{
 		this.customerDao.delete(customer);
 		return new SuccessResult("Müşteri silindi.");
 	}
+
 }

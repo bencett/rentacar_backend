@@ -12,4 +12,5 @@ public interface RentalService {
 	Result add(Rental rental);
 	Result update(Rental rental);
 	Result delete(Rental rental);
+	Result returnRentedCar(Rental rental);
 }

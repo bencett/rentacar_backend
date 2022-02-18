@@ -43,4 +43,9 @@ public class RentalsController {
 	public Result delete(@RequestBody Rental rental) {
 		return this.rentalService.delete(rental);
 	}
+	
+	@PostMapping("/returnRentedCar")
+	public Result returnRentedCar(@RequestBody Rental rental) {
+		return this.rentalService.returnRentedCar(rental);
+	}
 }
