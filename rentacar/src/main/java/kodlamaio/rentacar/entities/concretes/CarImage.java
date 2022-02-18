@@ -14,30 +14,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "rentals")
-public class Rental {
+@Table(name = "car_images")
+public class CarImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "car_id")
-	private int carId;
+	//@Column(name = "car_id")
+	//private int carId;
 	
-	//@Column(name = "customer_id")
-	//private int customerId;
+	@Column(name = "image_path")
+	private String imagePath;
 	
-	@Column(name = "rent_date")
-	private LocalDate rentDate;
+	@Column(name = "date")
+	private LocalDate date;
 	
-	@Column(name = "return_date")
-	private LocalDate returnDate;
-	
-	@ManyToOne//(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	@ManyToOne
+	@JoinColumn(name = "car_id")
+	private Car car;
 }
