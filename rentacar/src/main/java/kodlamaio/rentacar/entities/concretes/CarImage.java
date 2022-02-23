@@ -24,17 +24,21 @@ public class CarImage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
-	//@Column(name = "car_id")
-	//private int carId;
-	
+	/*
+	@Column(name = "car_id")
+	private int carId;
+	*/
 	@Column(name = "image_path")
 	private String imagePath;
 	
 	@Column(name = "date")
 	private LocalDate date;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "car_id")
 	private Car car;
+	
+	public CarImage(String imagePath) {
+		this.imagePath = imagePath;
+	}
 }

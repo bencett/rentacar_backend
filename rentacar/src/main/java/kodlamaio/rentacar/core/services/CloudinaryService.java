@@ -25,6 +25,7 @@ public class CloudinaryService {
 		cloudinary = new Cloudinary(valuesMap); 
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Map upload(MultipartFile multipartFile) throws IOException {
 		
 		File file = convertFile(multipartFile);
@@ -33,6 +34,7 @@ public class CloudinaryService {
 		return result;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Map delete(String id) throws IOException {
 		
 		Map result = cloudinary.uploader().destroy(id, ObjectUtils.emptyMap());
