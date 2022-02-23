@@ -1,13 +1,12 @@
 package kodlamaio.rentacar.business.concretes;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import kodlamaio.rentacar.business.abstracts.CarImageService;
 import kodlamaio.rentacar.core.services.CloudinaryService;
 import kodlamaio.rentacar.core.utilities.results.DataResult;
@@ -42,22 +41,20 @@ public class CarImageManager implements CarImageService{
 		Map<String, String> uploadPhoto;
 		try {
 			 uploadPhoto = this.cloudinaryService.upload(multipartFile);
-			 carImage.setImagePath(uploadPhoto.get("url"));
+			 carImage.setImagePath(uploadPhoto.get("public_id"));
+			 carImage.setDate(LocalDate.now());
 			 this.carImageDao.save(carImage);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-			
-			
-		
 		return new SuccessResult("Araba resmi eklendi.");
 		
 	}
 
 	@Override
-	public Result update(CarImage carImage) {
-		
+	public Result update(CarImage carImage, MultipartFile multipartFile) {
+		add(carImage, multipartFile);
 		this.carImageDao.save(carImage);
 		return new SuccessResult("Araba resmi güncellendi.");
 	}

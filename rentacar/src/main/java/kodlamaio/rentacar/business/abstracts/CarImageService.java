@@ -12,7 +12,7 @@ public interface CarImageService {
 
 	DataResult <List<CarImage>> getAll();
 	Result add(CarImage carImage, MultipartFile multipartFile);
-	Result update(CarImage carImage);
+	Result update(CarImage carImage, MultipartFile multipartFile);
 	Result delete(CarImage carImage);
 	DataResult<CarImage> getOneById(int id);
 }

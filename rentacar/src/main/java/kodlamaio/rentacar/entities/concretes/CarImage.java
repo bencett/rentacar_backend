@@ -34,7 +34,7 @@ public class CarImage {
 	@Column(name = "date")
 	private LocalDate date;
 
-	@ManyToOne
+	@ManyToOne(targetEntity = Car.class)
 	@JoinColumn(name = "car_id")
 	private Car car;
 	
