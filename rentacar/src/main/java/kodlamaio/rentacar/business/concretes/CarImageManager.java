@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,6 +38,7 @@ public class CarImageManager implements CarImageService{
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Result add(CarImage carImage, MultipartFile multipartFile) {
 		Map<String, String> uploadPhoto;
@@ -60,17 +63,23 @@ public class CarImageManager implements CarImageService{
 	}
 
 	@Override
-	public Result delete(CarImage carImage) {
+	public Result delete(int id) {
 		
-		this.carImageDao.delete(carImage);
+		this.carImageDao.deleteById(id);
 		return new SuccessResult("Araba resmi silindi.");
 	}
 
 	@Override
-	public DataResult<CarImage> getOneById(int id) {
+	public Optional<CarImage> getOne(int id) {
 		
-		return new SuccessDataResult<>
-		(this.carImageDao.getById(id));
+		return this.carImageDao.findById(id);
+		
+	}
+
+	@Override
+	public boolean exists(int id) {
+		
+		return carImageDao.existsById(id);
 	}
 
 }
