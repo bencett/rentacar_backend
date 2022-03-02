@@ -46,14 +46,15 @@ public class RentalManager implements RentalService{
 	@Override
 	public Result update(Rental rental) {
 		
+		rental.setRentDate(LocalDate.now());
 		this.rentalDao.save(rental);
 		return new SuccessResult("Kiralama güncellendi.");
 	}
 
 	@Override
-	public Result delete(Rental rental) {
+	public Result deleteById(int id) {
 		
-		this.rentalDao.delete(rental);
+		this.rentalDao.deleteById(id);
 		return new SuccessResult("Kiralama silindi.");
 	}
 
