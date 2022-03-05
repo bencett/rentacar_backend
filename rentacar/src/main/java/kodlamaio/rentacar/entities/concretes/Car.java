@@ -46,7 +46,7 @@ public class Car{
 	@JoinColumn(name = "brand_id")
 	private Brand brand;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne//(cascade = CascadeType.ALL)
 	@JoinColumn(name = "color_id")
 	private Color color;
 }

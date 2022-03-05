@@ -51,9 +51,9 @@ public class RentalManager implements RentalService{
 	}
 
 	@Override
-	public Result delete(Rental rental) {
+	public Result deleteById(int id) {
 		
-		this.rentalDao.delete(rental);
+		this.rentalDao.deleteById(id);
 		return new SuccessResult("Kiralama silindi.");
 	}
 

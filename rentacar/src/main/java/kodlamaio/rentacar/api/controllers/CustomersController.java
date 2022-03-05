@@ -2,7 +2,9 @@ package kodlamaio.rentacar.api.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,16 +32,16 @@ public class CustomersController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Customer customer) {
+	public Result add(@ModelAttribute Customer customer) {
 		return this.customerService.add(customer);
 	}
 	
 	@PostMapping("/update")
-	public Result update(@RequestBody Customer customer) {
+	public Result update(@ModelAttribute Customer customer) {
 		return this.customerService.update(customer);
 	}
 	
-	@PostMapping("/delete")
+	@DeleteMapping("/delete")
 	public Result delete(@RequestBody Customer customer) {
 		return this.customerService.delete(customer);
 	}
