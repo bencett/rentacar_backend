@@ -52,7 +52,7 @@ public class CarImagesController {
 		return new ResponseEntity(new SuccessResult("Resim yüklendi."),HttpStatus.OK);
 	}
 	*/
-	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@DeleteMapping("/deleteImage/{id}")
 	public ResponseEntity<?> delete(@PathVariable("id") int id) throws IOException {
 		if (!carImageService.exists(id)) {

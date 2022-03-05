@@ -11,6 +11,6 @@ public interface RentalService {
 	DataResult<List<Rental>> getAll();
 	Result add(Rental rental);
 	Result update(Rental rental);
-	Result deleteById(int id);
+	Result delete(Rental rental);
 	Result returnRentedCar(Rental rental);
 }

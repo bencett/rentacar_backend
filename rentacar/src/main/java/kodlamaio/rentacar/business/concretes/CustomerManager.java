@@ -1,8 +1,10 @@
 package kodlamaio.rentacar.business.concretes;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import kodlamaio.rentacar.business.abstracts.CustomerService;
 import kodlamaio.rentacar.core.utilities.results.DataResult;
 import kodlamaio.rentacar.core.utilities.results.Result;
@@ -49,4 +51,5 @@ public class CustomerManager implements CustomerService{
 		this.customerDao.delete(customer);
 		return new SuccessResult("Müşteri silindi.");
 	}
+
 }
