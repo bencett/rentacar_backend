@@ -14,6 +14,7 @@ public interface CarImageService {
 	Result add(CarImage carImage, MultipartFile multipartFile);
 	Result update(CarImage carImage, MultipartFile multipartFile);
 	Result delete(int id);
+	DataResult<List<CarImage>> getCarImagesByCarId(int carId);
 	public Optional<CarImage> getOne(int id);
 	boolean exists(int id);
 }

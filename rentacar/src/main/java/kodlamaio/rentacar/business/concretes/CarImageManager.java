@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -81,5 +80,14 @@ public class CarImageManager implements CarImageService{
 		
 		return carImageDao.existsById(id);
 	}
+
+	@Override
+	public DataResult<List<CarImage>> getCarImagesByCarId(int carId) {
+		
+		return new SuccessDataResult<List<CarImage>>
+		(this.carImageDao.getCarImagesByCarId(carId),"Arabanın resimler listelendi.");
+	}
+
+
 
 }
