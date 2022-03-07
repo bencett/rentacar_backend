@@ -1,6 +1,7 @@
 package kodlamaio.rentacar.business.concretes;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,9 +47,9 @@ public class CustomerManager implements CustomerService{
 	}
 
 	@Override
-	public Result delete(Customer customer) {
+	public Result deleteByCustomerId(UUID id) {
 		
-		this.customerDao.delete(customer);
+		this.customerDao.deleteByCustomerId(id);
 		return new SuccessResult("Müşteri silindi.");
 	}
 

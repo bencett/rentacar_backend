@@ -11,5 +11,5 @@ public interface UserService {
 	DataResult<List<User>> getAll();
 	Result add(User user);
 	Result update(User user);
-	Result delete(User user);
+	Result deleteById(int id);
 }

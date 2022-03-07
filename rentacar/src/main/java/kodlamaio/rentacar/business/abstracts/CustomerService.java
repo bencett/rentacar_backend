@@ -1,6 +1,7 @@
 package kodlamaio.rentacar.business.abstracts;
 
 import java.util.List;
+import java.util.UUID;
 
 import kodlamaio.rentacar.core.utilities.results.DataResult;
 import kodlamaio.rentacar.core.utilities.results.Result;
@@ -11,5 +12,5 @@ public interface CustomerService {
 	DataResult<List<Customer>> getAll();
 	Result add(Customer customer);
 	Result update(Customer customer);
-	Result delete(Customer customer);
+	Result deleteByCustomerId(UUID id);
 }

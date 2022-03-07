@@ -43,9 +43,9 @@ public class ColorManager implements ColorService{
 	}
 
 	@Override
-	public Result delete(Color color) {
+	public Result deleteById(int id) {
 
-		this.colorDao.delete(color);
+		this.colorDao.deleteById(id);
 		return new SuccessResult("Renk silindi.");
 	}
 

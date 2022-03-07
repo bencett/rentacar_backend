@@ -38,8 +38,22 @@ public class CarManager implements CarService{
 			this.carDao.save(car);
 			return new SuccessResult("Araba eklendi.");
 		}
-		return new ErrorResult("Belirtilen alanları doldurunuz.");
+		return new ErrorResult("Eksik veya hatalı bilgiler girdiniz.");
 		
+	}
+	
+	@Override
+	public Result update(Car car) {
+		
+		this.carDao.save(car);
+		return new SuccessResult("Araba güncellendi.");
+	}
+
+	@Override
+	public Result deleteById(int id) {
+		
+		this.carDao.deleteById(id);
+		return new SuccessResult("Araba silindi.");
 	}
 
 	@Override
@@ -63,19 +77,6 @@ public class CarManager implements CarService{
 		(this.carDao.getCarDetails(),"Araba detayları listelendi.");
 	}
 
-	@Override
-	public Result update(Car car) {
-		
-		this.carDao.save(car);
-		return new SuccessResult("Araba güncellendi.");
-	}
-
-	@Override
-	public Result delete(Car car) {
-		
-		this.carDao.delete(car);
-		return new SuccessResult("Araba silindi.");
-	}
 	//----------------------------------------------------
 	//---------------- AUTHORIZATION ---------------------
 	

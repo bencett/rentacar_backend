@@ -11,5 +11,5 @@ public interface ColorService {
 	DataResult<List<Color>> getAll();
 	Result add(Color color);
 	Result update(Color color);
-	Result delete(Color color);
+	Result deleteById(int id);
 }

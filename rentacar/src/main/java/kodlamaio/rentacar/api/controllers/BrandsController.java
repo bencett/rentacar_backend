@@ -2,10 +2,12 @@ package kodlamaio.rentacar.api.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.rentacar.business.abstracts.BrandService;
 import kodlamaio.rentacar.core.utilities.results.DataResult;
@@ -30,17 +32,17 @@ public class BrandsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Brand brand) {
+	public Result add(@ModelAttribute Brand brand) {
 		return this.brandService.add(brand);
 	}
 	
 	@PostMapping("/update")
-	public Result update(@RequestBody Brand brand) {
+	public Result update(@ModelAttribute Brand brand) {
 		return this.brandService.update(brand);
 	}
 	
-	@PostMapping("/delete")
-	public Result delete(@RequestBody Brand brand) {
-		return this.brandService.delete(brand);
+	@DeleteMapping("/deleteById/{id}")
+	public Result delete(@RequestParam int id) {
+		return this.brandService.deleteById(id);
 	}
 }

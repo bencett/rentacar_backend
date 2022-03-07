@@ -37,7 +37,7 @@ public class Rental {
 	@Column(name = "return_date")
 	private LocalDate returnDate;
 	
-	@ManyToOne//(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 }

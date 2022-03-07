@@ -44,9 +44,9 @@ public class BrandManager implements BrandService{
 	}
 
 	@Override
-	public Result delete(Brand brand) {
+	public Result deleteById(int id) {
 		
-		this.brandDao.delete(brand);
+		this.brandDao.deleteById(id);
 		return new SuccessResult("Marka silindi.");
 	}
 
