@@ -15,4 +15,7 @@ public interface CustomerDao extends JpaRepository<Customer, Integer>{
 	@Transactional
 	@Query(value="DELETE FROM Customer c WHERE c.id = :id")
 	void deleteByCustomerId(UUID id);
+	
+	@Query("SELECT c FROM Customer c WHERE c.id = :id")
+	Customer getByCustomerId(UUID id);
 }

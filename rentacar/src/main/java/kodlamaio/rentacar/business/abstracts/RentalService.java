@@ -12,5 +12,8 @@ public interface RentalService {
 	Result add(Rental rental);
 	Result update(Rental rental);
 	Result deleteById(int id);
-	Result returnRentedCar(Rental rental);
+	Result changeActivity(int id, boolean activity);
+	DataResult<Rental> getById(int id);
+	DataResult<List<Rental>> getAllActiveRentals();
+	Result returnRentedCar(int id);
 }

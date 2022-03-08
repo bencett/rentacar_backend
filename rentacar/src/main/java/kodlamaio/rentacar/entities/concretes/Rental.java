@@ -37,6 +37,9 @@ public class Rental {
 	@Column(name = "return_date")
 	private LocalDate returnDate;
 	
+	@Column(name = "is_active")
+	private boolean isActive;
+	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;

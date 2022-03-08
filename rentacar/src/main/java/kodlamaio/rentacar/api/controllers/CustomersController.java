@@ -2,7 +2,6 @@ package kodlamaio.rentacar.api.controllers;
 
 import java.util.List;
 import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +33,11 @@ public class CustomersController {
 		return this.customerService.getAll();
 	}
 	
+	@GetMapping("/getByCustomerId/{id}")
+	public DataResult<Customer> getByCustomerId(@RequestParam UUID id){
+		return this.customerService.getByCustomerId(id);
+	}
+	
 	@PostMapping("/add")
 	public Result add(@RequestBody Customer customer) {
 		return this.customerService.add(customer);
@@ -43,7 +47,7 @@ public class CustomersController {
 	public Result update(@ModelAttribute Customer customer) {
 		return this.customerService.update(customer);
 	}
-	
+
 	@DeleteMapping("/deleteByCustomerId/{id}")
 	public Result delete(@RequestParam("id") UUID id) {
 		return this.customerService.deleteByCustomerId(id);

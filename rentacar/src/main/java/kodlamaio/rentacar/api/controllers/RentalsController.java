@@ -32,6 +32,16 @@ public class RentalsController {
 		return this.rentalService.getAll();
 	}
 	
+	@GetMapping("/getAllActiveRentals")
+	public DataResult<List<Rental>> getAllActiveRentals() {
+		return this.rentalService.getAllActiveRentals();
+	}
+	
+	@GetMapping("/getById/{id}")
+	public DataResult<Rental> getById(@RequestParam int id) {
+		return this.rentalService.getById(id);
+	}
+	
 	@PostMapping("/add")
 	public Result add(@RequestBody Rental rental) {
 		return this.rentalService.add(rental);
@@ -47,8 +57,13 @@ public class RentalsController {
 		return this.rentalService.deleteById(id);
 	}
 	
-	@PostMapping("/returnRentedCar")
-	public Result returnRentedCar(@RequestBody Rental rental) {
-		return this.rentalService.returnRentedCar(rental);
+	@PostMapping("/returnRentedCar/{id}")
+	public Result returnRentedCar(@RequestParam int id) {
+		return this.rentalService.returnRentedCar(id);
+	}
+	
+	@PostMapping("/changeActivity")
+	public Result changeActivity(@RequestParam int id,@RequestParam boolean activity) {
+		return this.rentalService.changeActivity(id,activity);
 	}
 }

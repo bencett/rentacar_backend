@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kodlamaio.rentacar.business.abstracts.RentalService;
 import kodlamaio.rentacar.core.utilities.results.DataResult;
+import kodlamaio.rentacar.core.utilities.results.ErrorDataResult;
 import kodlamaio.rentacar.core.utilities.results.ErrorResult;
 import kodlamaio.rentacar.core.utilities.results.Result;
 import kodlamaio.rentacar.core.utilities.results.SuccessDataResult;
@@ -16,6 +17,7 @@ import kodlamaio.rentacar.entities.concretes.Rental;
 @Service
 public class RentalManager implements RentalService{
 	
+	private Rental rentalToChangeActivityOrReturnDate;
 	private RentalDao rentalDao;
 	
 	@Autowired
@@ -29,6 +31,20 @@ public class RentalManager implements RentalService{
 		
 		return new SuccessDataResult<List<Rental>>
 		(this.rentalDao.findAll(),"Kiralamalar listelendi.");
+	}
+	
+	@Override
+	public DataResult<List<Rental>> getAllActiveRentals() {
+		return new SuccessDataResult<List<Rental>>
+		(this.rentalDao.getAllActiveRentals(),"Aktif kiralamalar listelendi.");
+		
+	}
+	
+	@Override
+	public DataResult<Rental> getById(int id) {
+	    
+		return new SuccessDataResult<Rental>
+		(this.rentalDao.findById(id).get(),"Kiralama getirildi.");
 	}
 
 	@Override
@@ -56,12 +72,31 @@ public class RentalManager implements RentalService{
 		this.rentalDao.deleteById(id);
 		return new SuccessResult("Kiralama silindi.");
 	}
+	
 
 	@Override
-	public Result returnRentedCar(Rental rental) {
+	public Result returnRentedCar(int id) {
 		
-		rental.setReturnDate(LocalDate.now());
-		this.rentalDao.save(rental);
+		rentalToChangeActivityOrReturnDate = getById(id).getData();
+		rentalToChangeActivityOrReturnDate.setReturnDate(LocalDate.now());
+		this.rentalDao.save(rentalToChangeActivityOrReturnDate);
 		return new SuccessResult("Araba geri getirildi.");
 	}
+
+	@Override
+	public Result changeActivity(int id, boolean activity) {
+		
+	if (getById(id).getData() == null) {
+		
+		return new ErrorDataResult<>("Böyle bir kiralama yok.");
+	}else {
+		
+		rentalToChangeActivityOrReturnDate = getById(id).getData();
+		rentalToChangeActivityOrReturnDate.setActive(activity);
+		this.rentalDao.save(rentalToChangeActivityOrReturnDate);
+		return new SuccessResult("Kiralama aktifliği değiştirildi.");
+	}
+	
+	}
+	
 }
