@@ -81,7 +81,7 @@ public class CarManager implements CarService{
 	//---------------- AUTHORIZATION ---------------------
 	
 	private boolean checkIfCarNameOverTwoChar(String brandName) {
-		if (brandName.length() > 2) {
+		if (brandName.length() >= 2) {
 			return true;
 		}
 		return false;

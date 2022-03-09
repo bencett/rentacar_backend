@@ -43,7 +43,7 @@ public class RentalsController {
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Rental rental) {
+	public Result add(@ModelAttribute Rental rental) {
 		return this.rentalService.add(rental);
 	}
 	

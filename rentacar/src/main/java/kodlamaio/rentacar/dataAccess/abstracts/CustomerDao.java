@@ -18,4 +18,8 @@ public interface CustomerDao extends JpaRepository<Customer, Integer>{
 	
 	@Query("SELECT c FROM Customer c WHERE c.id = :id")
 	Customer getByCustomerId(UUID id);
+	/*
+	@Query("SELECT new kodlamaio.rentacar.entities.dtos.CustomerDetailsDto"
+			+ "(c.customerId, c.companyId, r.rental)")
+	Customer getCustomerWithRentals();*/
 }
