@@ -2,6 +2,8 @@ package kodlamaio.rentacar.business.concretes;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kodlamaio.rentacar.business.abstracts.RentalService;
@@ -97,6 +99,13 @@ public class RentalManager implements RentalService{
 		return new SuccessResult("Kiralama aktifliği değiştirildi.");
 	}
 	
+	}
+
+	@Override
+	public DataResult<List<Rental>> getRentalsByCustomerId(UUID id) {
+		
+		return new SuccessDataResult<List<Rental>>
+		(this.rentalDao.getRentalsByCustomerId(id),"Müşterinin kiralamaları getirildi.");
 	}
 	
 }

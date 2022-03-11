@@ -40,7 +40,7 @@ public class Rental {
 	@Column(name = "is_active")
 	private boolean isActive;
 	
-	@ManyToOne
+	@ManyToOne()
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 }

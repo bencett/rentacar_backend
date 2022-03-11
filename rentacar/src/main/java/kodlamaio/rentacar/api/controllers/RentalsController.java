@@ -1,6 +1,7 @@
 package kodlamaio.rentacar.api.controllers;
 
 import java.util.List;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,11 @@ public class RentalsController {
 	@GetMapping("/getAll")
 	public DataResult<List<Rental>> getAll(){
 		return this.rentalService.getAll();
+	}
+	
+	@GetMapping("/getRentalsByCustomerId/{id}")
+	public DataResult<List<Rental>> getRentalsByCustomerId(@RequestParam UUID id) {
+		return this.rentalService.getRentalsByCustomerId(id);
 	}
 	
 	@GetMapping("/getAllActiveRentals")
